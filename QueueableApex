@@ -1,0 +1,12 @@
+public class QueueableApex implements Queueable {
+    public void execute(Queueablecontext context){
+        list<lead> newld= [select lastname from lead where lastname like 'Test%'];
+        List<lead> updlist=new list<lead> ();
+        for(lead l:newld){
+            l.description='This lead is updated using Queueable Apex';
+            updlist.add(l);
+            
+        }
+        update updlist;
+    }
+}
